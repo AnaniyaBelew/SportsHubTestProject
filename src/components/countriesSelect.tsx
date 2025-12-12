@@ -30,7 +30,7 @@ export function CountrySelect({ countries }: Props) {
               className="h-5 w-5 rounded-full"
             />
           ) : (
-            <span>{countries[0].name_en}</span>
+            <span>{countries[0]?.name_en}</span>
           )}
         </div>
 

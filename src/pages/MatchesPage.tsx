@@ -4,17 +4,17 @@ import { Section } from '@/components/Matches/Section'
 import { Skeleton } from '@/components/ui/skeleton'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { useLeagueMatches } from '@/hooks/useleagueMatches'
+import { LiveSimulation } from '@/components/live/LiveSimulation'
 type MatchPagesProps = {
   season: string
   leagueId: string
   leagueName: string
 }
 
-export default function MatchesPage({ season, leagueId, leagueName }:MatchPagesProps) {
-  const { filter, setFilter, loading, error, matches } =
-    useLeagueMatches(leagueId, season)
-
+export default function MatchesPage({ season, leagueId, leagueName }: MatchPagesProps) {
+  const { filter, loading, error, matches, handleFilterChange } = useLeagueMatches(leagueId, season)
   const handleDateChange = (date: Date) => {
+    //Fetch Matches Based on Date
     console.log(date)
   }
 
@@ -23,19 +23,16 @@ export default function MatchesPage({ season, leagueId, leagueName }:MatchPagesP
       <h1 className="w-full max-w-7xl px-4 text-left text-[20px] font-semibold text-white">
         Matches
       </h1>
-
       <DateSelector onDateChange={handleDateChange} />
-
       <FilterTabs
         value={filter}
-        onChange={setFilter}
+        onChange={handleFilterChange}
         counts={{
           all: matches.length,
           live: filter === 'live' ? matches.length : 0,
           favorites: filter === 'favorite' ? matches.length : 0,
         }}
       />
-
       {/* LOADING */}
       {loading && (
         <div className="flex w-full max-w-7xl flex-col gap-4 px-4">
@@ -47,7 +44,6 @@ export default function MatchesPage({ season, leagueId, leagueName }:MatchPagesP
           </div>
         </div>
       )}
-
       {/* ERROR */}
       {!loading && error && (
         <div className="w-full max-w-7xl px-4">
@@ -57,11 +53,14 @@ export default function MatchesPage({ season, leagueId, leagueName }:MatchPagesP
           </Alert>
         </div>
       )}
-
       {/* MATCHES */}
-      {!loading && !error && (
-        <Section title={leagueName} matches={matches} />
-      )}
+      {!loading &&
+        !error &&
+        (filter === 'live' ? (
+          <LiveSimulation />
+        ) : (
+          <Section title={leagueName} matches={matches} />
+        ))}{' '}
     </div>
   )
 }

@@ -42,7 +42,7 @@ function AppHeader() {
                 onClick={() => navigate(item.path)}
                 variant="ghost"
                 className={[
-                  'rounded-none px-2 py-1 text-[18px] font-normal',
+                  'rounded-none px-2 py-1 text-[18px] font-normal cursor-pointer',
                   'hover:bg-transparent hover:text-white',
                   isActive ? 'text-sportsaccent border-sportsaccent border-b-2' : 'text-white',
                 ].join(' ')}

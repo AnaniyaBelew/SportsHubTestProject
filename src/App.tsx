@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route path="matches" element={<MatchesPage leagueId="4328" season="2024-2025" leagueName='Preimer League' />} />
           <Route path="match/:eventId" element={<MatchDetailsPage />} />
+          <Route path="match/live" element={<MatchDetailsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

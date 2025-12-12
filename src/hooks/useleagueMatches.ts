@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react"
-import { fetchLeagueEvents } from "@/services/events"
-import type { SportEvent } from "@/types/events/type"
-
-export type MatchFilter = "all" | "live" | "favorite"
+import { useEffect, useState } from 'react'
+import { fetchLeagueEvents } from '@/services/events'
+import type { SportEvent } from '@/types/events/type'
+export type MatchFilter = 'all' | 'live' | 'favorite'
 
 export function useLeagueMatches(leagueId: string, season: string) {
-  const [filter, setFilter] = useState<MatchFilter>("all")
+  const [filter, setFilter] = useState<MatchFilter>('all')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [matches, setMatches] = useState<SportEvent[]>([])
 
+  const handleFilterChange = (value: MatchFilter) => {
+    setFilter(value)
+  }
   useEffect(() => {
     let cancelled = false
 
@@ -41,5 +43,6 @@ export function useLeagueMatches(leagueId: string, season: string) {
     loading,
     error,
     matches,
+    handleFilterChange
   }
 }

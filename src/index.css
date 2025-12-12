@@ -136,3 +136,10 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
 }
+@keyframes underline-morph-slide {
+  0%   { transform: translateX(0) scaleX(0.4); }
+  25%  { transform: translateX(14px) scaleX(1); }
+  50%  { transform: translateX(28px) scaleX(0.4); }
+  75%  { transform: translateX(14px) scaleX(1); }
+  100% { transform: translateX(0) scaleX(0.4); }
+}

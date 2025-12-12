@@ -29,7 +29,7 @@ export default function MatchesPage({ season, leagueId, leagueName }: MatchPages
         onChange={handleFilterChange}
         counts={{
           all: matches.length,
-          live: filter === 'live' ? matches.length : 0,
+          live: 2,
           favorites: filter === 'favorite' ? matches.length : 0,
         }}
       />

@@ -45,24 +45,25 @@ export interface SportEvent {
   strStatus: string | null
   strPostponed: string | null
   strLocked: string | null
+  minute?: number
 }
 export interface TimelineEvent {
-  idTimeline: string;
-  idEvent: string;
-  strTimeline: "Card" | "subst" | string; 
-  strTimelineDetail: string;
-  strHome: "Yes" | "No";
-  strEvent: string;
-  idAPIfootball: string;
-  idPlayer: string;
-  strPlayer: string;
-  strCountry: string | null;
-  idAssist: string | null;
-  strAssist: string;
-  intTime: string; 
-  idTeam: string;
-  strTeam: string;
-  strComment: string;
-  dateEvent: string;
-  strSeason: string;
+  idTimeline: string
+  idEvent: string
+  strTimeline: 'Card' | 'subst' | string
+  strTimelineDetail: string
+  strHome: 'Yes' | 'No'
+  strEvent: string
+  idAPIfootball: string
+  idPlayer: string
+  strPlayer: string
+  strCountry: string | null
+  idAssist: string | null
+  strAssist: string
+  intTime: string
+  idTeam: string
+  strTeam: string
+  strComment: string
+  dateEvent: string
+  strSeason: string
 }
